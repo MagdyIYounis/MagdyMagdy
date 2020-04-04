@@ -1,0 +1,57 @@
+<%- include("Partials/Header.ejs") -%>
+<% if(Massage['code'] != ""){ %>
+    <% if(Massage['code'] == "0"){ %>
+        <div class="alert alert-danger" role="alert">
+            <%= Massage['Massages'] %>
+        </div>
+        <% }else if(Massage['code'] == "1"){ %>
+        <div class="alert alert-success" role="alert">
+            <%= Massage['Massages'] %>
+        </div>
+        <% } %>
+<% } %> 
+<br>
+
+<div class="container-fluid">
+    <div class="wrapper fadeInDown">
+        <h3>ID : <%= Data[0].Student%> </h3>
+        <h3>Name : <%= Data[0].Name %> </h3>
+        <table class="table table-dark">
+
+            <thead>
+                <tr>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Date Login</th>
+                    <th scope="col">Date Course</th>
+                    <th scope="col">Link Course</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% Data.forEach(info => { %>
+
+                <tr>
+                    <th scope="row"><%= info['Name Subject'] %></th>
+                    <td><%= info.Total %></td>
+                    <td><%= info['Date Loign'] %></td>
+                    <td><%= info.Date %></td>
+                    <td><a href="">Course</a></td>
+                </tr>
+
+                <% }); %>
+            </tbody>
+        </table>
+        <form style="width: 30%;" action="/Select/sendOrder" method="POST" enctype="multipart/form-data">
+            <input class="form-control col-sm-1 text-center" type="text" name="ID" placeholder="Readonly input here..."
+                value=<%= Data[0].Student%> readonly>
+            <div class="form-group ">
+                <label for="exampleFormControlTextarea1">Order</label>
+                <textarea class="form-control" style="text-align: right;" id="exampleFormControlTextarea1" Name="Order"
+                    rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send</button>
+
+        </form>
+    </div>
+</div>
+<%- include("Partials/Footer.ejs") -%>

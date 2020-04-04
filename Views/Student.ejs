@@ -1,0 +1,37 @@
+<%- include("Partials/Header.ejs") -%>
+<div>
+    <!--Massage-->
+    <% if(Massage != ""){ %>
+    <div class="alert alert-danger" role="alert">
+        <%= Massage %>
+    </div>
+    <% } %>
+    <br>
+    <!-- Form Add Emp -->
+    <div class="container">
+        <form action="/Select" method="POST" enctype="multipart/form-data">
+            <div class="wrapper fadeInDown">
+                <div id="formContent">
+
+                    <!-- Icon -->
+                    <br>
+                    <br>
+                    <div class="fadeIn first">
+                        <img src="../assets/Image/Logo.png" style="width: 42%" id="icon" alt="User Icon" />
+                    </div>
+                    <br>
+                    <br>
+
+                    <!-- Login Form -->
+                        <input type="number" id="login" class="fadeIn second" name="ID" placeholder="ID" required>
+                        <input type="tel" id="phone" name="Phone" placeholder="01000000000" pattern="[0-5]{3}[0-9]{8}" required>
+                        <input type="submit" class="fadeIn fourth" value="Log In">
+
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+<%- include("Partials/Footer.ejs") -%>
